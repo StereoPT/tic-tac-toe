@@ -1,6 +1,6 @@
 import Board from "@/components/Board/Board";
 
-const Home = () => {
+const TicTacToe = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <Board />
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TicTacToe;
