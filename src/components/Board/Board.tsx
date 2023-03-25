@@ -1,27 +1,8 @@
-import calculateWinner from "@/utils/calculateWinner";
-import { useState } from "react";
-
+import useBoard from "@/hooks/useBoard";
 import Cell from "../Cell/Cell";
 
-const initialBoardState = Array(9).fill(null);
-
 const Board = () => {
-  const [board, setBoard] = useState(initialBoardState);
-  const [player, setPlayer] = useState(true);
-  const winner = calculateWinner(board);
-
-  const handleCellClick = (idx: number) => {
-    const boardCopy = [...board];
-
-    if (winner || boardCopy[idx]) return;
-
-    boardCopy[idx] = player ? "X" : "O";
-
-    console.log(boardCopy);
-
-    setBoard(boardCopy);
-    setPlayer((prevPlayer) => !prevPlayer);
-  };
+  const { board, player, winner, handleCellClick } = useBoard();
 
   return (
     <div>
