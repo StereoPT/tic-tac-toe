@@ -1,15 +1,31 @@
 import Link from "next/link";
 
+import { Box, Button, Container, Heading, Stack } from "@chakra-ui/react";
+
 const HomePage = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="flex items-center justify-center flex-col gap-8">
-        <span className="text-6xl font-bold">Tic-Tac-Toe</span>
+    <Container maxW={"3xl"}>
+      <Stack as={Box} textAlign={"center"} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+          lineHeight={"110%"}>
+          Tic-Tac-Toe
+        </Heading>
         <Link href="/game">
-          <span className="px-4 py-4 bg-slate-600 text-white rounded-lg text-xl">Start Game</span>
+          <Button
+            colorScheme={"green"}
+            bg={"green.400"}
+            rounded={"full"}
+            px={6}
+            _hover={{
+              bg: "green.500",
+            }}>
+            Start Game
+          </Button>
         </Link>
-      </div>
-    </div>
+      </Stack>
+    </Container>
   );
 };
 

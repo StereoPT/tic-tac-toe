@@ -1,22 +1,29 @@
 import useBoard from "@/hooks/useBoard";
 import Cell from "../Cell/Cell";
+import { Box, Button, Grid } from "@chakra-ui/react";
 
 const Board = () => {
   const { board, player, winner, handleCellClick } = useBoard();
 
   return (
-    <div>
-      <div className="grid gap-4 grid-cols-3 grid-rows-3 mb-8">
+    <Box>
+      <Grid templateColumns="repeat(3, 1fr)" gap={"4"}>
         {board.map((cell, idx) => {
           return <Cell key={idx} text={cell} onCellClick={() => handleCellClick(idx)} />;
         })}
-      </div>
-      <div className="flex justify-center px-4 py-4 bg-slate-600 text-white rounded-lg">
-        <span className="text-2xl">
-          {winner ? `Winner: ${winner}` : `Next Player: ${player ? "X" : "O"}`}
-        </span>
-      </div>
-    </div>
+      </Grid>
+
+      <Button
+        colorScheme={"green"}
+        bg={"green.400"}
+        rounded={"full"}
+        px={6}
+        _hover={{
+          bg: "green.500",
+        }}>
+        {winner ? `Winner: ${winner}` : `Next Player: ${player ? "X" : "O"}`}
+      </Button>
+    </Box>
   );
 };
 
