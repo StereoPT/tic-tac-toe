@@ -1,16 +1,18 @@
 import Board from "@/components/Board/Board";
-import { Container, Flex } from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 
 const TicTacToe = () => {
   return (
-    <Container
-      as={Flex}
-      maxW={"3xl"}
+    <Box
+      paddingTop={40}
       height={"100vh"}
-      justifyContent={"center"}
-      alignItems={"center"}>
-      <Board />
-    </Container>
+      css={{
+        background: "linear-gradient(-60deg, #E2E8F0 0%, #F7FAFC 100%)",
+      }}>
+      <Container as={Flex} maxW={"3xl"} justifyContent={"center"} alignItems={"center"}>
+        <Board />
+      </Container>
+    </Box>
   );
 };
 

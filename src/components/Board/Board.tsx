@@ -1,6 +1,6 @@
 import useBoard from "@/hooks/useBoard";
 import Cell from "../Cell/Cell";
-import { Box, Button, Grid } from "@chakra-ui/react";
+import { Box, Text, Grid } from "@chakra-ui/react";
 
 const Board = () => {
   const { board, player, winner, handleCellClick } = useBoard();
@@ -13,16 +13,11 @@ const Board = () => {
         })}
       </Grid>
 
-      <Button
-        colorScheme={"green"}
-        bg={"green.400"}
-        rounded={"full"}
-        px={6}
-        _hover={{
-          bg: "green.500",
-        }}>
-        {winner ? `Winner: ${winner}` : `Next Player: ${player ? "X" : "O"}`}
-      </Button>
+      <Box mt={8} bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"} textAlign={"center"}>
+        <Text fontSize={"xl"} py={2}>
+          {winner ? `Winner: ${winner}` : `Next Player: ${player ? "X" : "O"}`}
+        </Text>
+      </Box>
     </Box>
   );
 };

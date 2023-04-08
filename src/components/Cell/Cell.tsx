@@ -1,4 +1,4 @@
-import { GridItem, Text } from "@chakra-ui/react";
+import { Flex, GridItem, Text } from "@chakra-ui/react";
 
 type CellProps = {
   text: string;
@@ -6,9 +6,22 @@ type CellProps = {
 };
 
 const Cell = ({ text, onCellClick }: CellProps) => {
+  const textColor = text === "X" ? "blue.600" : "orange.600";
+
   return (
-    <GridItem w="100%" h="10" bg="green.500" onClick={onCellClick}>
-      <Text>{text}</Text>
+    <GridItem
+      as={Flex}
+      w="24"
+      h="24"
+      rounded={"lg"}
+      shadow={"sm"}
+      bg="whiteAlpha.600"
+      onClick={onCellClick}
+      justifyContent={"center"}
+      alignItems={"center"}>
+      <Text fontSize={"6xl"} fontWeight={600} color={textColor}>
+        {text}
+      </Text>
     </GridItem>
   );
 };
