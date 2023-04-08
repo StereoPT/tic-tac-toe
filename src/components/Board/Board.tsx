@@ -1,5 +1,5 @@
 import Cell from "../Cell/Cell";
-import { Box, Grid } from "@chakra-ui/react";
+import { Grid, SlideFade } from "@chakra-ui/react";
 
 type BoardProps = {
   board: string[];
@@ -8,11 +8,13 @@ type BoardProps = {
 
 const Board = ({ board, handleCellClick }: BoardProps) => {
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={"4"}>
-      {board.map((cell, idx) => {
-        return <Cell key={idx} text={cell} onCellClick={() => handleCellClick(idx)} />;
-      })}
-    </Grid>
+    <SlideFade offsetY={"50px"} in={true}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={"4"}>
+        {board.map((cell, idx) => {
+          return <Cell key={idx} text={cell} onCellClick={() => handleCellClick(idx)} />;
+        })}
+      </Grid>
+    </SlideFade>
   );
 };
 
