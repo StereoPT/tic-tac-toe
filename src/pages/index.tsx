@@ -1,31 +1,35 @@
 import Link from "next/link";
 
-import { Box, Button, Container, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Heading, Stack } from "@chakra-ui/react";
+import Waves from "@/components/Waves/Waves";
 
 const HomePage = () => {
   return (
-    <Container maxW={"3xl"}>
-      <Stack as={Box} textAlign={"center"} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-          lineHeight={"110%"}>
-          Tic-Tac-Toe
-        </Heading>
-        <Link href="/game">
-          <Button
-            colorScheme={"green"}
-            bg={"green.400"}
-            rounded={"full"}
-            px={6}
-            _hover={{
-              bg: "green.500",
-            }}>
-            Start Game
-          </Button>
-        </Link>
-      </Stack>
-    </Container>
+    <Box>
+      <Box
+        paddingTop={48}
+        css={{
+          background: "linear-gradient(60deg, #2A4365 0%, #00A3C4 100%)",
+        }}>
+        <Stack textAlign={"center"} spacing={"24"}>
+          <Heading
+            fontWeight={800}
+            color={"gray.200"}
+            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+            lineHeight={"110%"}>
+            Tic-Tac-Toe
+          </Heading>
+          <Box>
+            <Link href="/game">
+              <Button colorScheme={"whiteAlpha"} variant={"outline"} size={"lg"}>
+                Start Game
+              </Button>
+            </Link>
+          </Box>
+          <Waves />
+        </Stack>
+      </Box>
+    </Box>
   );
 };
 
