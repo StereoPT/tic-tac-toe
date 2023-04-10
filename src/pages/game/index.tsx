@@ -2,6 +2,7 @@ import useBoard from "@/hooks/useBoard";
 
 import Board from "@/components/Board/Board";
 import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
+import Round from "@/components/Round/Round";
 
 const TicTacToe = () => {
   const { board, player, winner, handleCellClick, handlePlayAgain } = useBoard();
@@ -15,6 +16,7 @@ const TicTacToe = () => {
       }}>
       <Container as={Flex} maxW={"3xl"} justifyContent={"center"} alignItems={"center"}>
         <Stack spacing={8}>
+          <Round roundNumber={1} />
           <Board board={board} handleCellClick={handleCellClick} />
           <Stack spacing={4} textAlign={"center"}>
             {winner && (
