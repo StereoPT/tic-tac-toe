@@ -1,4 +1,4 @@
-const calculateWinner = (squares: string[]) => {
+const calculateWinner = (squares: string[], round: number) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -9,12 +9,21 @@ const calculateWinner = (squares: string[]) => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      // Someone Won
       return squares[a];
     }
   }
+
+  if (round >= 10) {
+    // Tie
+    return "tie";
+  }
+
+  // No one Won
   return null;
 };
 

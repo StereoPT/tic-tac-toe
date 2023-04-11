@@ -5,7 +5,7 @@ import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
 import Round from "@/components/Round/Round";
 
 const TicTacToe = () => {
-  const { board, player, winner, handleCellClick, handlePlayAgain } = useBoard();
+  const { board, round, player, victoryState, handleCellClick, handlePlayAgain } = useBoard();
 
   return (
     <Box
@@ -15,15 +15,15 @@ const TicTacToe = () => {
         background: "linear-gradient(-60deg, #E2E8F0 0%, #F7FAFC 100%)",
       }}>
       <Container as={Flex} maxW={"3xl"} justifyContent={"center"} alignItems={"center"}>
-        <Stack spacing={8}>
-          <Round roundNumber={1} />
+        <Stack spacing={4}>
+          <Round roundNumber={round} />
           <Board board={board} handleCellClick={handleCellClick} />
           <Stack spacing={4} textAlign={"center"}>
-            {winner && (
+            {victoryState && (
               <>
                 <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
                   <Text fontSize={"xl"} py={2}>
-                    Winner: {winner}
+                    {victoryState === "tie" ? `Tie` : `Winner: ${victoryState}`}
                   </Text>
                 </Box>
                 <Button variant={"solid"} colorScheme="blue" onClick={handlePlayAgain}>
@@ -31,7 +31,7 @@ const TicTacToe = () => {
                 </Button>
               </>
             )}
-            {!winner && (
+            {!victoryState && (
               <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
                 <Text fontSize={"xl"} py={2}>
                   Next Player: {player ? "X" : "O"}
