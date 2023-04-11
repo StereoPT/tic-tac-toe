@@ -12,7 +12,7 @@ const Round = ({ roundNumber }: RoundProps) => {
           Round:
         </Text>
       </Box>
-      <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
+      <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"} minW={"16"}>
         <Text fontSize={"xl"} fontWeight={600} py={2} px={4}>
           {roundNumber}
         </Text>

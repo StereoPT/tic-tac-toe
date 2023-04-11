@@ -26,7 +26,7 @@ const TicTacToe = () => {
                     {winner}
                   </Text>
                 </Box>
-                <Button variant={"solid"} colorScheme="blue" onClick={handlePlayAgain}>
+                <Button variant={"solid"} colorScheme="teal" onClick={handlePlayAgain}>
                   Play Again
                 </Button>
               </>

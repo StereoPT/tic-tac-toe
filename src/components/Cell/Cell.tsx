@@ -18,8 +18,9 @@ const Cell = ({ text, onCellClick }: CellProps) => {
       bg="whiteAlpha.600"
       onClick={onCellClick}
       justifyContent={"center"}
-      alignItems={"center"}>
-      <Text fontSize={"6xl"} fontWeight={600} color={textColor}>
+      alignItems={"center"}
+      cursor={"pointer"}>
+      <Text fontSize={"6xl"} fontWeight={600} color={textColor} userSelect={"none"}>
         {text}
       </Text>
     </GridItem>
