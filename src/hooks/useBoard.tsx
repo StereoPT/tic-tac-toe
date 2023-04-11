@@ -4,27 +4,29 @@ import { calculateBoardState, calculateBoardWinner } from "@/utils/boardUtils";
 
 const initialBoardState: string[] = Array(9).fill(null);
 const initialRound = 1;
-const initialPlayer = true;
+const initialPlayer = "X";
 
 const useBoard = () => {
   const [board, setBoard] = useState<string[]>(initialBoardState);
   const [round, setRound] = useState(initialRound);
-  const [player, setPlayer] = useState(initialPlayer);
-  const [winner, setWinner] = useState<string>();
+  const [player, setPlayer] = useState<"X" | "O">(initialPlayer);
+  const [winner, setWinner] = useState<string | null>(null);
 
   const handleCellClick = (idx: number) => {
     const boardCopy = [...board];
 
-    if (winner !== undefined || boardCopy[idx]) return;
+    if (!!winner || boardCopy[idx]) return;
 
-    boardCopy[idx] = player ? "X" : "O";
+    boardCopy[idx] = player;
     setBoard(boardCopy);
 
     const boardState = calculateBoardState(boardCopy, round);
 
     if (!boardState) {
       setRound((prevRound) => prevRound + 1);
-      setPlayer((prevPlayer) => !prevPlayer);
+      setPlayer((prevPlayer) => {
+        return prevPlayer === "X" ? "O" : "X";
+      });
     } else {
       const boardWinner = calculateBoardWinner(boardState, player);
       setWinner(boardWinner);
@@ -35,7 +37,7 @@ const useBoard = () => {
     setBoard(initialBoardState);
     setRound(initialRound);
     setPlayer(initialPlayer);
-    setWinner(undefined);
+    setWinner(null);
   };
 
   return {

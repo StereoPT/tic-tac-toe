@@ -27,10 +27,9 @@ export const calculateBoardState = (squares: string[], round: number) => {
   return null;
 };
 
-export const calculateBoardWinner = (boardState: "victory" | "tie", player: boolean) => {
+export const calculateBoardWinner = (boardState: "victory" | "tie", player: "X" | "O") => {
   if (boardState === "victory") {
-    const winnerPlayer = player ? "X" : "O";
-    return `Winner: ${winnerPlayer}`;
+    return `Winner: ${player}`;
   } else {
     return "Tie";
   }

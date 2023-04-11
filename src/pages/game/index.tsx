@@ -3,6 +3,7 @@ import useBoard from "@/hooks/useBoard";
 import Board from "@/components/Board/Board";
 import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
 import Round from "@/components/Round/Round";
+import NextPlayer from "@/components/NextPlayer/NextPlayer";
 
 const TicTacToe = () => {
   const { board, round, player, winner, handleCellClick, handlePlayAgain } = useBoard();
@@ -18,27 +19,20 @@ const TicTacToe = () => {
         <Stack spacing={4}>
           <Round roundNumber={round} />
           <Board board={board} handleCellClick={handleCellClick} />
-          <Stack spacing={4} textAlign={"center"}>
-            {winner && (
-              <>
-                <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
-                  <Text fontSize={"xl"} py={2}>
-                    {winner}
-                  </Text>
-                </Box>
-                <Button variant={"solid"} colorScheme="teal" onClick={handlePlayAgain}>
-                  Play Again
-                </Button>
-              </>
-            )}
-            {!winner && (
+          {winner ? (
+            <Stack spacing={4} textAlign={"center"}>
               <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
                 <Text fontSize={"xl"} py={2}>
-                  Next Player: {player ? "X" : "O"}
+                  {winner}
                 </Text>
               </Box>
-            )}
-          </Stack>
+              <Button variant={"solid"} colorScheme="teal" onClick={handlePlayAgain}>
+                Play Again
+              </Button>
+            </Stack>
+          ) : (
+            <NextPlayer player={player} />
+          )}
         </Stack>
       </Container>
     </Box>
