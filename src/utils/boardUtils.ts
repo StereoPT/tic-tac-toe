@@ -18,7 +18,7 @@ export const calculateBoardState = (squares: string[], round: number) => {
     }
   }
 
-  if (round >= 10) {
+  if (round >= 9) {
     // Tie
     return "tie";
   }

@@ -18,9 +18,9 @@ const useBoard = () => {
     if (winner !== undefined || boardCopy[idx]) return;
 
     boardCopy[idx] = player ? "X" : "O";
-    const boardState = calculateBoardState(boardCopy, round);
-
     setBoard(boardCopy);
+
+    const boardState = calculateBoardState(boardCopy, round);
 
     if (!boardState) {
       setRound((prevRound) => prevRound + 1);
