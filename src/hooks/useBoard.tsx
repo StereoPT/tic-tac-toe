@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import calculateWinner from "@/utils/calculateWinner";
+import { calculateBoardState, calculateBoardWinner } from "@/utils/boardUtils";
 
 const initialBoardState: string[] = Array(9).fill(null);
 const initialRound = 1;
@@ -10,32 +10,39 @@ const useBoard = () => {
   const [board, setBoard] = useState<string[]>(initialBoardState);
   const [round, setRound] = useState(initialRound);
   const [player, setPlayer] = useState(initialPlayer);
-
-  const victoryState = calculateWinner(board, round);
+  const [winner, setWinner] = useState<string>();
 
   const handleCellClick = (idx: number) => {
     const boardCopy = [...board];
 
-    if (victoryState || boardCopy[idx]) return;
+    if (winner !== undefined || boardCopy[idx]) return;
 
     boardCopy[idx] = player ? "X" : "O";
+    const boardState = calculateBoardState(boardCopy, round);
 
     setBoard(boardCopy);
-    setRound((prevRound) => prevRound + 1);
-    setPlayer((prevPlayer) => !prevPlayer);
+
+    if (!boardState) {
+      setRound((prevRound) => prevRound + 1);
+      setPlayer((prevPlayer) => !prevPlayer);
+    } else {
+      const boardWinner = calculateBoardWinner(boardState, player);
+      setWinner(boardWinner);
+    }
   };
 
   const handlePlayAgain = () => {
     setBoard(initialBoardState);
     setRound(initialRound);
     setPlayer(initialPlayer);
+    setWinner(undefined);
   };
 
   return {
     board,
     round,
     player,
-    victoryState,
+    winner,
 
     handleCellClick,
     handlePlayAgain,

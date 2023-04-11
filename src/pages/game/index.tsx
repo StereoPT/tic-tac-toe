@@ -5,7 +5,7 @@ import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
 import Round from "@/components/Round/Round";
 
 const TicTacToe = () => {
-  const { board, round, player, victoryState, handleCellClick, handlePlayAgain } = useBoard();
+  const { board, round, player, winner, handleCellClick, handlePlayAgain } = useBoard();
 
   return (
     <Box
@@ -19,11 +19,11 @@ const TicTacToe = () => {
           <Round roundNumber={round} />
           <Board board={board} handleCellClick={handleCellClick} />
           <Stack spacing={4} textAlign={"center"}>
-            {victoryState && (
+            {winner && (
               <>
                 <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
                   <Text fontSize={"xl"} py={2}>
-                    {victoryState === "tie" ? `Tie` : `Winner: ${victoryState}`}
+                    {winner}
                   </Text>
                 </Box>
                 <Button variant={"solid"} colorScheme="blue" onClick={handlePlayAgain}>
@@ -31,7 +31,7 @@ const TicTacToe = () => {
                 </Button>
               </>
             )}
-            {!victoryState && (
+            {!winner && (
               <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
                 <Text fontSize={"xl"} py={2}>
                   Next Player: {player ? "X" : "O"}
