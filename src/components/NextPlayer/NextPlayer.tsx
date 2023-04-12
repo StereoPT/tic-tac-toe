@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text, Flex } from "@chakra-ui/react";
 
 type NextPlayerProps = {
   player: "X" | "O";
@@ -7,15 +7,35 @@ type NextPlayerProps = {
 const NextPlayer = ({ player }: NextPlayerProps) => {
   return (
     <Stack direction={"row"} spacing={4}>
-      <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"} flex={1}>
-        <Text fontSize={"xl"} py={2} px={4}>
-          Next Player:
-        </Text>
+      <Box
+        bg={"whiteAlpha.600"}
+        rounded={"lg"}
+        shadow={"sm"}
+        flex={1}
+        py={2}
+        border={player === "X" ? "2px" : "none"}
+        borderColor={"blue.600"}>
+        <Flex direction={"column"} textAlign={"center"}>
+          <Text fontSize={"4xl"} fontWeight={600} color={"blue.600"}>
+            X
+          </Text>
+          <Text fontSize={"lg"}>Player</Text>
+        </Flex>
       </Box>
-      <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"} minW={16} textAlign={"center"}>
-        <Text fontSize={"xl"} fontWeight={600} py={2} px={4}>
-          {player}
-        </Text>
+      <Box
+        bg={"whiteAlpha.600"}
+        rounded={"lg"}
+        shadow={"sm"}
+        flex={1}
+        py={2}
+        border={player === "O" ? "2px" : "none"}
+        borderColor={"orange.600"}>
+        <Flex direction={"column"} textAlign={"center"}>
+          <Text fontSize={"4xl"} fontWeight={600} color={"orange.600"}>
+            O
+          </Text>
+          <Text fontSize={"lg"}>Player</Text>
+        </Flex>
       </Box>
     </Stack>
   );

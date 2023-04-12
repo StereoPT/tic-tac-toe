@@ -11,7 +11,7 @@ const TicTacToe = () => {
 
   return (
     <Box
-      paddingTop={40}
+      paddingTop={24}
       height={"100vh"}
       css={{
         background: "linear-gradient(-60deg, #E2E8F0 0%, #F7FAFC 100%)",
