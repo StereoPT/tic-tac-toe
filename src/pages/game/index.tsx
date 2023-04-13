@@ -5,13 +5,14 @@ import { Box, Container, Flex, Stack } from "@chakra-ui/react";
 import Round from "@/components/Round/Round";
 import NextPlayer from "@/components/NextPlayer/NextPlayer";
 import Winner from "@/components/Winner/Winner";
+import Timer from "@/components/Timer/Timer";
 
 const TicTacToe = () => {
   const { board, round, player, winner, handleCellClick, handlePlayAgain } = useBoard();
 
   return (
     <Box
-      paddingTop={24}
+      paddingTop={16}
       height={"100vh"}
       css={{
         background: "linear-gradient(-60deg, #E2E8F0 0%, #F7FAFC 100%)",
@@ -23,7 +24,10 @@ const TicTacToe = () => {
           {winner ? (
             <Winner winner={winner} handlePlayAgain={handlePlayAgain} />
           ) : (
-            <NextPlayer player={player} />
+            <Stack spacing={4}>
+              <Timer />
+              <NextPlayer player={player} />
+            </Stack>
           )}
         </Stack>
       </Container>
