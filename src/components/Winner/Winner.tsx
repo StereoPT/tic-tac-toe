@@ -1,11 +1,14 @@
 import { Box, Button, Stack, Text } from "@chakra-ui/react";
 
 type WinnerProps = {
+  player: string;
   winner: string;
   handlePlayAgain: () => void;
 };
 
-const Winner = ({ winner, handlePlayAgain }: WinnerProps) => {
+const Winner = ({ player, winner, handlePlayAgain }: WinnerProps) => {
+  const playerColor = player === "X" ? "blue" : "orange";
+
   return (
     <Stack spacing={4} textAlign={"center"}>
       <Box bg={"whiteAlpha.600"} rounded={"lg"} shadow={"sm"}>
@@ -13,7 +16,7 @@ const Winner = ({ winner, handlePlayAgain }: WinnerProps) => {
           {winner}
         </Text>
       </Box>
-      <Button variant={"solid"} colorScheme="teal" onClick={handlePlayAgain}>
+      <Button variant={"solid"} colorScheme={playerColor} onClick={handlePlayAgain}>
         Play Again
       </Button>
     </Stack>

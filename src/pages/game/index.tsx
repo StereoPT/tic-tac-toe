@@ -8,7 +8,7 @@ import Winner from "@/components/Winner/Winner";
 import Timer from "@/components/Timer/Timer";
 
 const TicTacToe = () => {
-  const { board, round, player, winner, handleCellClick, handlePlayAgain } = useBoard();
+  const { board, round, player, winner, playerTime, handleCellClick, handlePlayAgain } = useBoard();
 
   return (
     <Box
@@ -22,10 +22,10 @@ const TicTacToe = () => {
           <Round roundNumber={round} />
           <Board board={board} handleCellClick={handleCellClick} />
           {winner ? (
-            <Winner winner={winner} handlePlayAgain={handlePlayAgain} />
+            <Winner player={player} winner={winner} handlePlayAgain={handlePlayAgain} />
           ) : (
             <Stack spacing={4}>
-              <Timer />
+              <Timer player={player} playerTime={playerTime} />
               <NextPlayer player={player} />
             </Stack>
           )}

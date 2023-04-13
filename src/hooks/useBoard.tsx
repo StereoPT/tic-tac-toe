@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { calculateBoardState, calculateBoardWinner } from "@/utils/boardUtils";
+import random from "random";
 
 const initialBoardState: string[] = Array(9).fill(null);
 const initialRound = 1;
 const initialPlayer = "X";
+const initialPlayerTime = 30;
 
 const useBoard = () => {
   const [board, setBoard] = useState<string[]>(initialBoardState);
   const [round, setRound] = useState(initialRound);
   const [player, setPlayer] = useState<"X" | "O">(initialPlayer);
   const [winner, setWinner] = useState<string | null>(null);
+  const [playerTime, setPlayerTime] = useState<number>(initialPlayerTime);
 
   const handleCellClick = (idx: number) => {
     const boardCopy = [...board];
@@ -31,6 +34,19 @@ const useBoard = () => {
       const boardWinner = calculateBoardWinner(boardState, player);
       setWinner(boardWinner);
     }
+
+    setPlayerTime(initialPlayerTime);
+  };
+
+  const clickRandomCell = () => {
+    const availableCells = [...board].flatMap((player, idx) => {
+      if (player) return [];
+      return idx;
+    });
+
+    const randomCell = random.choice(availableCells) as number;
+
+    handleCellClick(randomCell);
   };
 
   const handlePlayAgain = () => {
@@ -38,13 +54,31 @@ const useBoard = () => {
     setRound(initialRound);
     setPlayer(initialPlayer);
     setWinner(null);
+    setPlayerTime(initialPlayerTime);
   };
+
+  const passTime = () => {
+    setPlayerTime((prevTime) => {
+      if (prevTime <= 0) {
+        clickRandomCell();
+      }
+
+      return prevTime - 1;
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => passTime(), 1000);
+
+    return () => clearInterval(interval);
+  }, [board]);
 
   return {
     board,
     round,
     player,
     winner,
+    playerTime,
 
     handleCellClick,
     handlePlayAgain,
