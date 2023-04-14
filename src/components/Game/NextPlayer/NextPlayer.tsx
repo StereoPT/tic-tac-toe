@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react";
-import Player from "../Player/Player";
+import Player from "./Player/Player";
 import { Symbol } from "@/types/types";
 
 type NextPlayerProps = {

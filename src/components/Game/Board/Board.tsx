@@ -1,5 +1,5 @@
 import { Symbol } from "@/types/types";
-import Cell from "../Cell/Cell";
+import Cell from "./Cell/Cell";
 import { Grid, SlideFade } from "@chakra-ui/react";
 
 type BoardProps = {
