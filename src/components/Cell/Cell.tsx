@@ -1,13 +1,13 @@
+import { Symbol } from "@/types/types";
+import { getPlayerColor } from "@/utils/playerUtils";
 import { Flex, GridItem, Text } from "@chakra-ui/react";
 
 type CellProps = {
-  text: string;
+  text: Symbol;
   onCellClick: () => void;
 };
 
 const Cell = ({ text, onCellClick }: CellProps) => {
-  const textColor = text === "X" ? "blue.600" : "orange.600";
-
   return (
     <GridItem
       as={Flex}
@@ -20,7 +20,7 @@ const Cell = ({ text, onCellClick }: CellProps) => {
       justifyContent={"center"}
       alignItems={"center"}
       cursor={"pointer"}>
-      <Text fontSize={"6xl"} fontWeight={600} color={textColor} userSelect={"none"}>
+      <Text fontSize={"6xl"} fontWeight={600} color={getPlayerColor(text)} userSelect={"none"}>
         {text}
       </Text>
     </GridItem>

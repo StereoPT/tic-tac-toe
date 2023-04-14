@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 
 import { calculateBoardState, calculateBoardWinner } from "@/utils/boardUtils";
 import random from "random";
+import { Symbol } from "@/types/types";
 
-const initialBoardState: string[] = Array(9).fill(null);
+const initialBoardState: Symbol[] = Array(9).fill(null);
 const initialRound = 1;
 const initialPlayer = "X";
 const initialPlayerTime = 30;
 
 const useBoard = () => {
-  const [board, setBoard] = useState<string[]>(initialBoardState);
+  const [board, setBoard] = useState<Symbol[]>(initialBoardState);
   const [round, setRound] = useState(initialRound);
-  const [player, setPlayer] = useState<"X" | "O">(initialPlayer);
+  const [player, setPlayer] = useState<Symbol>(initialPlayer);
   const [winner, setWinner] = useState<string | null>(null);
   const [playerTime, setPlayerTime] = useState<number>(initialPlayerTime);
 
