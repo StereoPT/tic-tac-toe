@@ -1,0 +1,27 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multiplayer Tic-Tac-Toe using Next, Chakra-ui and WebSockets.",
+  "scripts": {
+    "prepare": "concurrently \"npm:prepare:backend\" \"npm:prepare:frontend\"",
+    "prepare:backend": "cd backend && npm i",
+    "prepare:frontend": "cd frontend && npm i",
+    "dev": "concurrently \"npm:backend\" \"npm:frontend\"",
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run dev --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StereoPT/tic-tac-toe.git"
+  },
+  "author": "StereoPT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StereoPT/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/StereoPT/tic-tac-toe#readme"
+}
