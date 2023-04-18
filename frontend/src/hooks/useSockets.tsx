@@ -5,7 +5,7 @@ const useSockets = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
-    const newSocket: Socket = io("http://localhost:4200", {
+    const newSocket: Socket = io("http://localhost:1337", {
       transports: ["polling"],
     });
 

@@ -1,34 +1,37 @@
 import express, { Express, Request, Response } from "express";
-import cors from "cors";
-import http from "http";
-import socketio from "socket.io";
-import dotenv from "dotenv";
+import { createServer } from "http";
+import { Server } from "socket.io";
 
+import notFound from "@/middleware/notFound";
+import errorHandler from "@/middleware/errorHandler";
+import ServerSocket from "@/sockets";
+
+import cors from "cors";
+import dotenv from "dotenv";
 dotenv.config();
 
+const corsOptions = {
+  origin: "*",
+};
+
 const app: Express = express();
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-const server = http.createServer(app);
-const io = new socketio.Server(server, {
-  cors: {
-    origin: "*",
-  },
+app.use(cors(corsOptions));
+app.use(express.json());
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: corsOptions,
 });
-io.listen(4200);
-const port = process.env.PORT || 1337;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + Typescript Server");
 });
 
-io.on("connection", (socket) => {
-  console.log("User Connected");
-});
+app.use(notFound, errorHandler);
 
-app.listen(port, () => {
+io.on("connection", ServerSocket);
+
+const port = process.env.PORT || 1337;
+httpServer.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
 });
