@@ -2,9 +2,9 @@ import express, { Express, Request, Response } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 
-import notFound from "@/middleware/notFound";
-import errorHandler from "@/middleware/errorHandler";
-import ServerSocket from "@/sockets";
+import notFound from "./middleware/notFound";
+import errorHandler from "./middleware/errorHandler";
+import ServerSocket from "./sockets";
 
 import cors from "cors";
 import dotenv from "dotenv";

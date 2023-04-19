@@ -8,14 +8,13 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "incremental": true,
+    "isolatedModules": true,
     "skipLibCheck": true,
     "allowJs": true,
     "lib": ["dom", "es6"],
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "./"
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.ts"]
+  "include": ["./src/**/*.ts"]
 }
