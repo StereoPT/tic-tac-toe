@@ -15,8 +15,8 @@ const Player = ({ player, symbol }: PlayerProps) => {
       shadow={"sm"}
       flex={1}
       py={2}
-      border={player === symbol ? "2px" : "none"}
-      borderColor={getPlayerColor(symbol)}>
+      border={"2px"}
+      borderColor={player === symbol ? getPlayerColor(symbol) : "transparent"}>
       <Flex direction={"column"} textAlign={"center"}>
         <Text fontSize={"4xl"} fontWeight={600} color={getPlayerColor(symbol)}>
           {symbol}
