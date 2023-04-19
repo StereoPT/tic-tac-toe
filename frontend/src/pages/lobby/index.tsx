@@ -1,7 +1,12 @@
+import useSockets from "@/hooks/useSockets";
 import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Lobby = () => {
+  const { socket } = useSockets();
+
+  if (!socket) return;
+
   return (
     <Box
       as={Flex}

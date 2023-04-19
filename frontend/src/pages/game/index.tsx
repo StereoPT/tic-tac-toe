@@ -10,7 +10,9 @@ import useSockets from "@/hooks/useSockets";
 
 const TicTacToe = () => {
   const { board, round, player, winner, playerTime, handleCellClick, handlePlayAgain } = useBoard();
-  const { socketId } = useSockets();
+  const { socket } = useSockets();
+
+  if (!socket) return;
 
   return (
     <Box
@@ -22,7 +24,6 @@ const TicTacToe = () => {
         background: "linear-gradient(-60deg, #E2E8F0 0%, #F7FAFC 100%)",
       }}>
       <Stack spacing={4}>
-        {socketId}
         <Round roundNumber={round} />
         <Board board={board} handleCellClick={handleCellClick} />
         {winner ? (
