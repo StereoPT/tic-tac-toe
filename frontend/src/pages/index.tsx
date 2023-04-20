@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Box, Button, Heading, Icon, Stack } from "@chakra-ui/react";
 import Waves from "@/components/Waves/Waves";
 
-import { MdSearch } from "react-icons/md";
+import { MdPlayCircle } from "react-icons/md";
 
 const HomePage = () => {
   return (
@@ -22,13 +22,13 @@ const HomePage = () => {
             Tic-Tac-Toe
           </Heading>
           <Box>
-            <Link href="/lobby">
+            <Link href="/game">
               <Button
                 colorScheme={"whiteAlpha"}
                 variant={"outline"}
                 size={"lg"}
-                rightIcon={<Icon as={MdSearch} />}>
-                Find Game
+                rightIcon={<Icon as={MdPlayCircle} />}>
+                Play
               </Button>
             </Link>
           </Box>

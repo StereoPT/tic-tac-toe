@@ -1,13 +1,10 @@
-import useSocketStore from "@/store/socketStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Socket, io } from "socket.io-client";
 
 const useSockets = () => {
-  const { socket, setSocket } = useSocketStore((state) => state);
+  const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
-    if (socket !== null) return;
-
     const newSocket: Socket = io("http://localhost:1337", {
       transports: ["polling"],
     });
@@ -16,7 +13,10 @@ const useSockets = () => {
       setSocket(newSocket);
     });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      newSocket.disconnect();
+      setSocket(null);
+    };
   }, []);
 
   return { socket };

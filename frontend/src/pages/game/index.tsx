@@ -1,18 +1,15 @@
 import useBoard from "@/hooks/useBoard";
 
 import Board from "@/components/Game/Board/Board";
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import Round from "@/components/Game/Round/Round";
 import NextPlayer from "@/components/Game/NextPlayer/NextPlayer";
 import Winner from "@/components/Game/Winner/Winner";
 import Timer from "@/components/Game/Timer/Timer";
-import useSockets from "@/hooks/useSockets";
 
 const TicTacToe = () => {
-  const { board, round, player, winner, playerTime, handleCellClick, handlePlayAgain } = useBoard();
-  const { socket } = useSockets();
-
-  if (!socket) return;
+  const { socket, board, round, player, winner, playerTime, handleCellClick, handlePlayAgain } =
+    useBoard();
 
   return (
     <Box
