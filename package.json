@@ -1,27 +1,30 @@
 {
-  "name": "tic-tac-toe",
+  "name": "frontend",
   "version": "1.0.0",
   "private": true,
-  "description": "Multiplayer Tic-Tac-Toe using Next, Chakra-ui and WebSockets.",
   "scripts": {
-    "prepare": "concurrently \"npm:prepare:backend\" \"npm:prepare:frontend\"",
-    "prepare:backend": "cd backend && npm i",
-    "prepare:frontend": "cd frontend && npm i",
-    "dev": "concurrently \"npm:backend\" \"npm:frontend\"",
-    "frontend": "npm run dev --prefix frontend",
-    "backend": "npm run dev --prefix backend"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "devDependencies": {
-    "concurrently": "^8.0.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/StereoPT/tic-tac-toe.git"
-  },
-  "author": "StereoPT",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/StereoPT/tic-tac-toe/issues"
-  },
-  "homepage": "https://github.com/StereoPT/tic-tac-toe#readme"
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@types/node": "18.15.3",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "framer-motion": "^10.10.0",
+    "next": "13.2.4",
+    "random": "^4.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "socket.io-client": "^4.6.1",
+    "typescript": "5.0.2",
+    "zustand": "^4.3.7"
+  }
 }

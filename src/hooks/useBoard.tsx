@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { calculateBoardState, calculateBoardWinner } from "@/utils/boardUtils";
 import random from "random";
 import { Symbol } from "@/types/types";
-import useSockets from "./useSockets";
 
 const initialBoardState: Symbol[] = Array(9).fill(null);
 const initialRound = 1;
@@ -11,8 +10,6 @@ const initialPlayer = "X";
 const initialPlayerTime = 30;
 
 const useBoard = () => {
-  const { socket } = useSockets();
-
   const [board, setBoard] = useState<Symbol[]>(initialBoardState);
   const [round, setRound] = useState(initialRound);
   const [player, setPlayer] = useState<Symbol>(initialPlayer);
@@ -78,7 +75,6 @@ const useBoard = () => {
   }, [board]);
 
   return {
-    socket,
     board,
     round,
     player,
