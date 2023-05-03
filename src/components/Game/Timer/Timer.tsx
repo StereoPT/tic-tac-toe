@@ -1,6 +1,6 @@
 import { Symbol } from "@/types/types";
 import { getPlayerColor } from "@/utils/playerUtils";
-import { Box, Icon, Progress, Stack, Flex } from "@chakra-ui/react";
+import { Box, Icon, Progress, Stack } from "@chakra-ui/react";
 import { MdOutlineTimer } from "react-icons/md";
 
 type TimerProps = {
